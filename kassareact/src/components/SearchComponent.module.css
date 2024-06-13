@@ -1,0 +1,30 @@
+.searchCcontainer {
+  display: inline-block;
+  vertical-align: top;
+  width: 70%;
+}
+
+.FormContainer {
+  margin-bottom: 30px;
+}
+.FormContainer form {
+  align-items: center;
+  justify-content: center;
+}
+
+.FormContainer input {
+  width: 60%;
+  height: 40px;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.FormContainer button {
+  margin-left: 20px;
+  height: 50px;
+  cursor: pointer;
+  background-color: beige;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,11 @@
+.product_list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  margin-top: 10px;
+}
+
+span {
+  font-size: 20px;
+}

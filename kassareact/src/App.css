@@ -1,0 +1,36 @@
+.App {
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  margin-top: 24px;
+}
+.check-container {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px silver;
+  display: inline-block;
+  width: 25%;
+  margin-right: 10px;
+  background: linear-gradient(to bottom, white 60%, rgb(236, 230, 253));
+}
+.check-container li {
+  font-size: 2px;
+  opacity: 0;
+  transform: translateX(100px);
+  text-align: left;
+  padding-left: 5%;
+  animation: product 0.2s forwards;
+}
+@keyframes product {
+  to {
+    font-size: 16px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
