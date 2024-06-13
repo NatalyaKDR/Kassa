@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Kassa</h1>
+      <h1>Моя касса</h1>
       <Check purchases={purchases} />
       <SearchComponent onButtonClick={addPurchaseHandler} />
     </div>
