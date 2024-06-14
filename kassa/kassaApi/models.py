@@ -2,8 +2,8 @@ import os
 import sys
 from PIL import Image
 from io import BytesIO
-
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
 from django.urls import reverse
@@ -17,6 +17,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, verbose_name='description')
     provider = models.CharField(max_length=128,  blank=True, verbose_name='provider')
     price = models.FloatField(verbose_name='price')
+    discount = models.IntegerField(default=0, verbose_name='discount %')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='craete_time')
     time_update = models.DateTimeField(auto_now=True, verbose_name='update_time')
     expiry_date = models.DateField(verbose_name='expiry date')
@@ -95,3 +96,14 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
         ordering = ['title']
 
+class Check(models.Model):
+    user = models.ForeignKey(User, default=1, verbose_name='User', on_delete=models.PROTECT)
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name='craete_time')
+    summ = models.FloatField(verbose_name='Summ')
+    products = models.TextField(verbose_name='products')
+
+    class Meta:
+        ordering = ['-time_create']
+
+    def __str__(self):
+        return self.user.username + ' ' + str(self.time_create.strftime("%d/%m/%Y, %H:%M:%S")) + ' ' + str(self.summ) + '$'

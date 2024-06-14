@@ -3,8 +3,8 @@
     text-align: center;
     max-width: 100%;
     margin: 0 auto;
-}
 
+}
 h1 {
     font-size: 2.2rem;
     margin-bottom: 40px;
@@ -14,13 +14,34 @@ h1 {
 .check-container {
     position: fixed;
     padding: 10px;
+    padding-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px silver;
     display: inline-block;
     width: 25%;
     left: 10px;
-    top: 10%;
+    top: 50%;
+    translate: 0 -50%;
+    max-height: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: linear-gradient(to bottom, white 60%, rgb(236, 230, 253));
+}
+.check-container::-webkit-scrollbar {
+    width: 12px; /* Ширина вертикальной полосы прокрутки */
+}
+
+.check-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Цвет фона полосы прокрутки */
+}
+
+.check-container::-webkit-scrollbar-thumb {
+    background-color: lavender; /* Цвет ползунка полосы прокрутки */
+    border-radius: 6px; /* Скругление ползунка */
+}
+
+.check-container::-webkit-scrollbar-thumb:hover {
+    background-color: #d4d4fa; /* Цвет ползунка при наведении */
 }
 
 .check-container ol {
@@ -33,7 +54,85 @@ h1 {
     transform: translateX(200px);
     animation: product 0.3s forwards;
 }
-.check-container button{
+
+.total {
+    text-align: right;
+}
+
+.total div {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.moneyConfirm {
+    margin-bottom: 15px;
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
+
+.moneyConfirm img:first-child {
+    z-index: 1;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24%;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.moneyConfirm img:first-child:hover{
+    width: 25%;
+}
+
+.moneyConfirm img:last-child {
+    opacity: 0.1;
+    position: absolute;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120px);
+    width: 0;
+    cursor: pointer;
+}
+
+.activeMoney {
+    animation: money 0.15s 4;
+
+}
+
+@keyframes money {
+    to {
+        width: 24%;
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes product {
+    to {
+        font-size: 16px;
+        opacity: 1;
+        transform: translateX(0);
+        text-align: left;
+    }
+}
+
+
+.check-container span {
+    font-size: 18px;
+    opacity: 0;
+    letter-spacing: 4px;
+}
+
+.price {
+    opacity: 1 !important;
+    letter-spacing: 0 !important;
+    transition: 0.3s;
+}
+
+.check-container li button {
     cursor: pointer;
     margin-right: 5px;
     width: 25px;
@@ -47,20 +146,11 @@ h1 {
     background-color: lavender;
 }
 
-.check-container button:active{
+.check-container li button:active {
     transform: scale(1.05);
     box-shadow: 0 0 5px cornflowerblue;
 }
 
-@keyframes product {
-    to {
-        font-size: 16px;
-        opacity: 1;
-        transform: translateX(0);
-        text-align: left;
-
-    }
-}
 
 .backdrop {
     position: fixed;
@@ -86,6 +176,7 @@ h1 {
     z-index: 2;
 
 }
+
 .modal {
     opacity: 0.95;
     border-radius: 20px;
@@ -97,10 +188,12 @@ h1 {
     z-index: 3;
     animation: modal 6s infinite linear;
 }
-.modal button{
+
+.modal button {
     padding: 10px;
     margin: 10px;
 }
+
 @keyframes modal {
     0% {
         box-shadow: 20px 20px 80px #7283d5;

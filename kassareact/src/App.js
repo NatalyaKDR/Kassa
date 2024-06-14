@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import SearchComponent from "./components/SearchComponent";
 import Check from "./components/Check";
 import "./App.css";
+import {nanoid} from 'nanoid';
 
 function App() {
     const [purchases, setPurchases] = useState([]);
@@ -19,6 +20,7 @@ function App() {
         const purchaseExist = purchases.find((el) => el.title === title)
         if (!(purchaseExist)) {
             const newPurchase = {
+                key: nanoid(),
                 title: title,
                 price: price,
                 pcs: 1,
@@ -29,6 +31,12 @@ function App() {
             purchaseExist.pcs++
             purchaseExist.summPrice = Math.round(purchaseExist.price * purchaseExist.pcs * 100) / 100
             setPurchases([...purchases])
+
+            let ob = document.getElementById(purchaseExist.key).querySelector('.price')
+            ob.classList.remove('price')
+            setTimeout(() => {
+                ob.classList.add('price')
+            }, 1);
         }
     };
 
@@ -64,13 +72,14 @@ function App() {
         purchaseExist.summPrice = Math.round(purchaseExist.price * purchaseExist.pcs * 100) / 100
         setPurchases([...purchases])
 
+
     }
     return (
-
 
         <div className="App">
             <h1>Моя касса</h1>
             <Check purchases={purchases}
+                   setPurchases={setPurchases}
                    dicrementFnc={dicrementFnc}
                    incrementFnc={incrementFnc}
             />
@@ -88,6 +97,7 @@ function App() {
                     </div>
                 </>
             )}
+
             <SearchComponent onButtonClick={addPurchaseHandler}/>
 
         </div>

@@ -4,7 +4,35 @@ p {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.discount {
+  position: absolute;
+  opacity: 0.85;
+  top: -10px;
+  right: -40px;
+  height: 60px;
+  width: 120px;
+  background-color: #fff371;
+  color: #000000;
+  font-size: 14px;
+  font-weight: bold;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+.discountvalue{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  translate: -50%;
+}
 
+.strikethrough {
+  text-decoration: line-through;
+  color: silver;
+}
+
+.description{
+  font-size: 12px;
+}
 .picture {
   height: 100px;
   border-radius: 10px;
@@ -34,6 +62,7 @@ p {
   box-shadow: 4px 8px 8px silver;
   text-align: center;
   transform: translateX(50px) translateY(50px);
+  overflow: hidden;
   animation: card 0.2s forwards;
 }
 .cat {
