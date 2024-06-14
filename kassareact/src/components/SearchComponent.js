@@ -19,7 +19,7 @@ function SearchComponent({ onButtonClick }) {
   useEffect(() => {
     if (cat_selected) {
       fetchProducts(cat_selected, "cat");
-      setSwitchToProducts(true);
+      setSwitchToProducts(true)
     }
   }, [cat_selected]);
 
@@ -55,8 +55,12 @@ function SearchComponent({ onButtonClick }) {
   };
 
   const handleButtonClick = () => {
-    onButtonClick(product);
-  };
+    if(products.length===1){
+      onButtonClick(products[0].title, products[0].price)}
+  }
+  const handlePurchaseClick = (title, price) => {
+      onButtonClick(title,price)
+  }
 
   return (
     <div className={styles.searchCcontainer}>
@@ -82,6 +86,7 @@ function SearchComponent({ onButtonClick }) {
               onProductCardClick={fetchProducts}
               onBackClick={setSwitchToProducts}
               onCardClick={onCardClick}
+              onPurchase = {handlePurchaseClick}
             />
           ) : (
             <CategoriesList
