@@ -1,8 +1,11 @@
 import React, {useState} from "react";
 import SearchComponent from "./components/SearchComponent";
 import Check from "./components/Check";
+import Header from "./components/Header";
 import "./App.css";
+import "./font.css";
 import {nanoid} from 'nanoid';
+
 
 function App() {
     const [purchases, setPurchases] = useState([]);
@@ -31,12 +34,15 @@ function App() {
             purchaseExist.pcs++
             purchaseExist.summPrice = Math.round(purchaseExist.price * purchaseExist.pcs * 100) / 100
             setPurchases([...purchases])
+            let ob = document.getElementById(purchaseExist.key).querySelector('.price');
+            if (ob.classList) {
+                ob.classList.remove('price');
+                requestAnimationFrame(() => {
+                    ob.classList.add('price');
+                });
+            }
 
-            let ob = document.getElementById(purchaseExist.key).querySelector('.price')
-            ob.classList.remove('price')
-            setTimeout(() => {
-                ob.classList.add('price')
-            }, 1);
+
         }
     };
 
@@ -74,33 +80,34 @@ function App() {
 
 
     }
-    return (
+    return (<>
+            <Header/>
+            <div className="App">
 
-        <div className="App">
-            <h1>Моя касса</h1>
-            <Check purchases={purchases}
-                   setPurchases={setPurchases}
-                   dicrementFnc={dicrementFnc}
-                   incrementFnc={incrementFnc}
-            />
-            {isOpen && (<>
-                    <div className="backdrop"></div>
-                    <div className="modal-overlay">
-                        <div className="modal">
-                            <h3>Confirmation</h3>
-                            <p>Do you want delete {message}?</p>
-                            <div className="modal-actions">
-                                <button onClick={() => confirmModal(message)}>Confirm</button>
-                                <button onClick={() => closeModal(message)}>Cancel</button>
+                <Check purchases={purchases}
+                       setPurchases={setPurchases}
+                       dicrementFnc={dicrementFnc}
+                       incrementFnc={incrementFnc}
+                />
+                {isOpen && (<>
+                        <div className="backdrop"></div>
+                        <div className="modal-overlay">
+                            <div className="modal">
+                                <h3>Confirmation</h3>
+                                <p>Do you want delete {message}?</p>
+                                <div className="modal-actions">
+                                    <button onClick={() => confirmModal(message)}>Confirm</button>
+                                    <button onClick={() => closeModal(message)}>Cancel</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
+                    </>
+                )}
 
-            <SearchComponent onButtonClick={addPurchaseHandler}/>
+                <SearchComponent onButtonClick={addPurchaseHandler}/>
 
-        </div>
+            </div>
+        </>
     );
 }
 

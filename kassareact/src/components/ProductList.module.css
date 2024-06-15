@@ -4,6 +4,8 @@
   flex-direction: row;
   justify-content: left;
   margin-top: 10px;
+  padding-block: 10px;
+  overflow: hidden;
 }
 
 span {

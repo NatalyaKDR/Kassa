@@ -1,5 +1,6 @@
-// import styles from "./Check.module.css";
+//import styles from "./Check.module.css";
 
+import money_img from './money.png'
 import {useEffect, useState} from "react";
 
 function Check(props) {
@@ -16,14 +17,14 @@ function Check(props) {
         setTotalCheck(total);
     }, [purchases]);
 
-    const CheckPost = (purchases)=>{
+    const CheckPost = (purchases) => {
         fetch('http://127.0.0.1:8000/api/v1/check_post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(purchases),
-      });
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(purchases),
+        });
     }
 
     const handleMoneyMouseDown = () => {
@@ -32,20 +33,21 @@ function Check(props) {
 
     const handleMoneyMouseUp = () => {
         setTimeout(() => {
-            setActiveMoney(false);
+            setActiveMoney(false)
             CheckPost(purchases);
             setPurchases([])
-
         }, 600);
     };
 
 
     function updateClass(key) {
-        let ob = document.getElementById(key).querySelector('.price')
-        ob.classList.remove('price')
-        setTimeout(() => {
-            ob.classList.add('price')
-        }, 1);
+        let ob = document.getElementById(key).querySelector('.price');
+        if (ob.classList) {
+            ob.classList.remove('price');
+            requestAnimationFrame(() => {
+                ob.classList.add('price');
+            });
+        }
     }
 
     return (
@@ -68,9 +70,9 @@ function Check(props) {
                     <div className='moneyConfirm'><img
                         onMouseDown={handleMoneyMouseDown}
                         onMouseUp={handleMoneyMouseUp}
-                        src={'http://127.0.0.1:8000/media/money.png'} alt='confirmButton'/>
+                        src={money_img} alt='confirmButton'/>
                         <img className={`${activeMoney ? 'activeMoney' : ''}`}
-                             src={'http://127.0.0.1:8000/media/money.png'}
+                             src={money_img}
                              alt='confirmButton'/></div>
                 </>)}
         </div>

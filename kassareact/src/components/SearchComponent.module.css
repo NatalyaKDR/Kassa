@@ -1,6 +1,7 @@
 .searchCcontainer {
   display: inline-block;
   vertical-align: top;
+  margin-top: 5%;
   width: 70%;
   margin-left: 27%;
 }
