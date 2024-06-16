@@ -63,6 +63,7 @@ p {
   text-align: center;
   transform: translateX(50px) translateY(50px);
   overflow: hidden;
+  background: linear-gradient(to bottom, white 30%, rgb(236, 230, 253));
   animation: card 0.2s forwards;
 }
 .cat {
@@ -73,7 +74,7 @@ p {
 }
 @keyframes card {
   to {
-    opacity: 1;
+    opacity: 0.85;
     transform: translateX(0) translateY(0);
   }
 }

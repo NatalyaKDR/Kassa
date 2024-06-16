@@ -1,15 +1,21 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import ProductList from "./ProductList";
 import styles from "./SearchComponent.module.css";
 import CategoriesList from "./CategoriesList";
 
-function SearchComponent({onButtonClick}) {
+function SearchComponent({onButtonClick, purchases}) {
     let [product, setProduct] = useState("");
     let [products, setProducts] = useState([]);
     let [cat_selected, setCatSelected] = useState("");
     let [categories, setCategories] = useState([]);
     let [switch_to_products, setSwitchToProducts] = useState(false);
+    const inputRef = useRef(null)
 
+    useEffect(()=>{
+        if (purchases.length === 0){
+            inputRef.current.focus();
+        }
+    })
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/api/v1/categories/`)
             .then((response) => response.json())
@@ -74,6 +80,7 @@ function SearchComponent({onButtonClick}) {
                     <input
                         type="text"
                         value={product}
+                        ref={inputRef}
                         onChange={handleFormChange}
                     />
                     <button

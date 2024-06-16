@@ -15,6 +15,7 @@ def index(request):
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
+
     def get_queryset(self):
         get_params = self.request.query_params
         search_param = [i for i in get_params.keys()][0]
@@ -37,13 +38,16 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
 
 class CheckPost(APIView):
     renderer_classes = [JSONRenderer]
-
     def post(self, request):
         purchases = request.data
         text = ''
         summ = 0
-        for purchase in purchases:
-            summ += purchase['summPrice']
-            text += purchase['title'] + '-' + str(purchase['pcs']) + '-' + str(purchase['summPrice']) + '$\n'
-        Check(summ=summ, products=text).save()
-        return Response({'message': 'Post request received'})
+        try:
+            for purchase in purchases:
+                summ += purchase['summPrice']
+                text += purchase['title'] + '-' + str(purchase['pcs']) + '-' + str(purchase['summPrice']) + '$\n'
+                Check(summ=summ, products=text).save()
+                return Response({'message': 'Saved'})
+        except:
+            return Response({'message': 'Not saved'})
+

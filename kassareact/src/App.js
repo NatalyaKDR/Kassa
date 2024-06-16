@@ -104,7 +104,9 @@ function App() {
                     </>
                 )}
 
-                <SearchComponent onButtonClick={addPurchaseHandler}/>
+                <SearchComponent
+                    purchases={purchases}
+                    onButtonClick={addPurchaseHandler}/>
 
             </div>
         </>

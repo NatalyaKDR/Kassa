@@ -10,27 +10,28 @@
     padding: 10px;
     padding-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px silver;
+    box-shadow: 0 0 10px lavender;
     display: inline-block;
     width: 25%;
     left: 10px;
-    top: 7.5%;
-    max-height: 85%;
+    top: 10%;
+    max-height: 80%;
     overflow-y: auto;
     overflow-x: hidden;
+    opacity: 0.8;
     background: linear-gradient(to bottom, white 60%, rgb(236, 230, 253));
 }
 .check-container::-webkit-scrollbar {
-    width: 12px; /* Ширина вертикальной полосы прокрутки */
+    width: 12px;
 }
 
 .check-container::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Цвет фона полосы прокрутки */
+    background-color: #f1f1f1;
 }
 
 .check-container::-webkit-scrollbar-thumb {
-    background-color: lavender; /* Цвет ползунка полосы прокрутки */
-    border-radius: 6px; /* Скругление ползунка */
+    background-color: lavender;
+    border-radius: 6px;
 }
 
 .check-container::-webkit-scrollbar-thumb:hover {
@@ -178,7 +179,7 @@
     max-width: 80%;
     max-height: 80%;
     z-index: 3;
-    animation: modal 6s infinite linear;
+    animation: modal 5s infinite linear;
 }
 
 .modal button {
