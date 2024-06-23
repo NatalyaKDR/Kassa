@@ -1,0 +1,20 @@
+.header {
+    padding-inline: 20px;
+    background-color: lavender;
+    box-shadow: 0 5px 10px lavender;
+    /*border-bottom: 1px solid silver;*/
+    position: fixed;
+    opacity: 0.85;
+    height: 35px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.time{
+    position: absolute;
+    left: 92%;
+    line-height: 30px;
+    font-family: 'OneDay';
+
+}

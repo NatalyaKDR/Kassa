@@ -13,6 +13,7 @@ router.register(r'categories', CategoryViewSet, basename='categories')
 urlpatterns = [
     path('', index),
     path('api/v1/', include(router.urls)),
+    path('api/v1/check_post', CheckPost.as_view())
 
 ]
 if settings.DEBUG:
