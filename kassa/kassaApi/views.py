@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from kassaApi.models import Product, Category, Check
 from kassaApi.serializers import ProductSerializer, CategorySerializer
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import IsAuthenticated
 
 
 def index(request):
@@ -15,6 +16,7 @@ def index(request):
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = ProductSerializer
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         get_params = self.request.query_params
@@ -34,10 +36,12 @@ class ProductViewSet(viewsets.ReadOnlyModelViewSet):
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (IsAuthenticated,)
 
 
 class CheckPost(APIView):
     renderer_classes = [JSONRenderer]
+    permission_classes = (IsAuthenticated,)
     def post(self, request):
         purchases = request.data
         text = ''
