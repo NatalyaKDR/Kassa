@@ -14,7 +14,7 @@ root.render(
       <Route
         path="/"
         element={
-          <PrivateRoute isAuthenticated={isUserAuthenticated}>
+          <PrivateRoute isAuthenticated={true}>
             <App />
           </PrivateRoute>
         }
